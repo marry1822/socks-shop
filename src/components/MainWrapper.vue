@@ -9,9 +9,3 @@ export default {
   name: "MainWrapper"
 };
 </script>
-
-<style scoped>
-.main-wrapper {
-  margin-left: 100px;
-}
-</style>

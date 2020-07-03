@@ -49,9 +49,6 @@ export default {
       default: () => {}
     }
   },
-  // mounted() {
-  //   this.$set(this.product_data, "quantity", 1);
-  // },
   methods: {
     addToCart() {
       this.$emit("addToCart", this.product_data);
@@ -71,7 +68,7 @@ export default {
 }
 
 .item-image {
-  width: 250px;
+  width: 100%;
 }
 
 .item-price {

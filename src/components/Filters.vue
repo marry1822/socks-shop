@@ -1,5 +1,5 @@
 <template>
-  <div class="filters d-flex flex-column">
+  <div class="filters d-flex flex-row justify-content-center">
     <div class="select">
       <p class="name">Категория:</p>
       <b-form-select v-model.number="selected" :selected="selected">
@@ -59,11 +59,12 @@ export default {
 </script>
 
 <style scoped>
+.filters {
+  margin: 50px 0;
+}
 .select {
   width: 150px;
-  position: fixed;
-  left: 30px;
-  top: 400px;
+  margin-right: 50px;
 }
 
 .title {
@@ -89,9 +90,6 @@ export default {
 
 .price-input {
   width: 150px;
-  position: fixed;
-  left: 30px;
-  top: 300px;
 }
 
 .name {
