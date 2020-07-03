@@ -1,6 +1,6 @@
 <template>
   <div class="header d-flex align-items-center justify-content-between">
-    <a class="logo link" href=""
+    <a class="logo link" href="#"
       ><img src="../assets/logo.png" alt="logo" width="100px"
     /></a>
     <b-nav class="header-nav">
@@ -17,16 +17,15 @@
         :to="{
           name: 'payment'
         }"
-        ><a class="link">Оплата</a></router-link
-      >
+        ><a href="payment" class="link">Оплата</a>
+      </router-link>
       <router-link
         class="link"
         :to="{
           name: 'contacts'
         }"
-        ><a href="contacts" class="link">Контакты</a></router-link
-      >
-
+        ><a href="contacts" class="link">Контакты</a>
+      </router-link>
       <router-link
         class="link"
         :to="{
