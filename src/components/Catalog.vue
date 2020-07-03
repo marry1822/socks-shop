@@ -3,7 +3,7 @@
     <h1 class="title catalog-title">Каталог</h1>
     <Filters :options="categories" :selected="selected" />
     <BRow>
-      <BCol cols="4" v-for="item in PRODUCTS" :key="item.article">
+      <BCol cols="4" v-for="item in filteredProducts" :key="item.article">
         <CatalogItem :product_data="item" @addToCart="addToCart" />
       </BCol>
     </BRow>
@@ -32,7 +32,9 @@ export default {
     Filters
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API();
+    this.GET_PRODUCTS_FROM_API().then(response => {
+      this.items = response.data;
+    });
   },
   methods: {
     ...mapActions(["GET_PRODUCTS_FROM_API", "ADD_TO_CART"]),
@@ -41,7 +43,17 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["PRODUCTS", "CART"])
+    ...mapGetters(["PRODUCTS", "CART"]),
+    filteredProducts() {
+      let filtered = this.items
+        .filter(item => {
+          return this.selected == 0 || item.category.value === this.selected;
+        })
+        .filter(item => {
+          return item.price >= this.minPrice && item.price <= this.maxPrice;
+        });
+      return filtered;
+    }
   }
 };
 </script>
