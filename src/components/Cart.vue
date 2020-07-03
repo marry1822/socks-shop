@@ -24,7 +24,7 @@
     <div class="cart-total">
       <p>К оплате:</p>
       <p class="text-bold">{{ cartTotalCost }} ₽</p>
-      <b-button class="pay" size="sm" pill>Оплатить</b-button>
+      <b-button class="pay" size="sm">Оплатить</b-button>
     </div>
   </div>
 </template>
@@ -87,10 +87,6 @@ export default {
   position: absolute;
   left: 30px;
   top: 150px;
-  border: solid;
-  border-color: #5e616a;
-  border-radius: 20px;
-  border-width: 1px;
   padding: 5px 10px;
 }
 

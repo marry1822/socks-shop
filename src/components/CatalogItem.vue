@@ -31,7 +31,7 @@
     />
     <p class="item-name">{{ product_data.name }}</p>
     <p class="item-price">{{ product_data.price }} ₽</p>
-    <b-button class="add-to-cart" size="sm" pill @click="addToCart"
+    <b-button class="add-to-cart" size="sm" @click="addToCart"
       >В корзину</b-button
     >
   </div>

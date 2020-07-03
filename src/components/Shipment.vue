@@ -36,10 +36,6 @@ export default {
   position: absolute;
   left: 30px;
   top: 150px;
-  border: solid;
-  border-color: #5e616a;
-  border-radius: 20px;
-  border-width: 1px;
   padding: 5px 10px;
 }
 
