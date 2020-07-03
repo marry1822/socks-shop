@@ -1,6 +1,6 @@
 <template>
   <div class="header d-flex align-items-center justify-content-between">
-    <a class="logo link" href="#"
+    <a class="logo link" href="catalog"
       ><img src="../assets/logo.png" alt="logo" width="100px"
     /></a>
     <b-nav class="header-nav">
@@ -35,7 +35,16 @@
           }
         }"
       >
-        <a href="cart" class="link">Корзина: {{ CART.length }}</a>
+        <a href="cart" class="link"
+          ><b-icon
+            class="icon"
+            icon="cart2"
+            scale="1.25"
+            shift-v="1.25"
+            aria-hidden="true"
+          ></b-icon
+          >Корзина: {{ CART.length }}</a
+        >
       </router-link>
     </b-nav>
   </div>
@@ -79,5 +88,9 @@ export default {
   cursor: pointer;
   color: #5e616a;
   text-decoration: none;
+}
+
+.icon{
+  margin-right: 5px;
 }
 </style>

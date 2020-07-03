@@ -1,6 +1,6 @@
 <template>
-  <div class="catalog">
-    <h1 class="title catalog-title">Каталог</h1>
+  <div class="catalog d-flex flex-wrap justify-content-center">
+    <!-- <h1 class="title catalog-title">Каталог</h1> -->
     <Filters :options="categories" :selected="selected" />
     <BRow>
       <BCol cols="4" v-for="product in filteredProducts" :key="product.article">

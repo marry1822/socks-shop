@@ -19,7 +19,15 @@
       <span> {{ cart_item_data.quantity }} </span>
       <b-button class="inc-dec" size="sm" @click="increment" pill> + </b-button>
     </div>
-    <b-button class="delete" @click="deleteFromCart">Удалить</b-button>
+    <b-button class="delete" @click="deleteFromCart"
+      ><b-icon
+        class="icon"
+        icon="trash"
+        scale="1"
+        shift-v="1"
+        aria-hidden="true"
+      ></b-icon
+    ></b-button>
   </div>
 </template>
 

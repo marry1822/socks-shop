@@ -85,6 +85,7 @@ p {
   background-color: #e2dcd5;
   color: #5e616a;
   border-color: #c5c0ba;
+  flex-basis: 25%;
 }
 
 .add-to-cart:hover {

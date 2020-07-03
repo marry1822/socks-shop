@@ -8,7 +8,14 @@
         name: 'catalog'
       }"
     >
-      <a class="to-catalog link">В каталог</a>
+      <a class="to-catalog link"><b-icon
+          class="icon"
+          icon="arrow-left"
+          scale="1.25"
+          shift-v="1.25"
+          aria-hidden="true"
+        ></b-icon
+        >В каталог</a>
     </router-link>
     <h1 class="title">Доставка</h1>
     <p>Самовывоз с 1-го Муринского проспекта дом 1</p>
@@ -47,5 +54,9 @@ export default {
 
 .link:hover {
   color: darkgray;
+}
+
+.icon{
+  margin-right: 5px;
 }
 </style>

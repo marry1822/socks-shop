@@ -1,12 +1,23 @@
 <template>
-  <div class="cart d-flex align-items-center justify-content-center flex-column">
+  <div
+    class="cart d-flex align-items-center justify-content-center flex-column"
+  >
     <router-link
       class="link"
       :to="{
         name: 'catalog'
       }"
     >
-      <a class="to-catalog link">В каталог</a>
+      <a class="to-catalog link"
+        ><b-icon
+          class="icon"
+          icon="arrow-left"
+          scale="1.25"
+          shift-v="1.25"
+          aria-hidden="true"
+        ></b-icon
+        >В каталог</a
+      >
     </router-link>
     <h2 class="title">Корзина</h2>
     <p v-if="!cart_data.length">Корзина пуста...</p>
@@ -105,10 +116,6 @@ export default {
 }
 
 .cart-total {
-  /* position: fixed;
-  width: 100%;
-  bottom: 0;
-  left: 0; */
   position: absolute;
   top: 280px;
   right: 20px;
@@ -119,7 +126,6 @@ export default {
 
 .items-container {
   width: 900px;
-  /* margin-bottom: 100px; */
   margin-right: 200px;
 }
 
@@ -140,5 +146,9 @@ export default {
   background-color: #81af7b;
   color: white;
   border-color: #81af7b;
+}
+
+.icon{
+  margin-right: 5px;
 }
 </style>

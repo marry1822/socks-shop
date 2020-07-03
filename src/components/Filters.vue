@@ -1,6 +1,6 @@
 <template>
   <div
-    class="filters d-flex flex-row justify-content-center align-items-center"
+    class="filters d-flex flex-row justify-content-center align-items-center flex-wrap"
   >
     <div class="select">
       <p class="name">Категория:</p>

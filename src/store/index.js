@@ -62,7 +62,6 @@ let store = new Vuex.Store({
       state.products = products;
     },
     TO_CART: (state, product) => {
-      // state.cart.push(product);
       state.cart.push({ ...product, quantity: 1 });
     },
     REMOVE_FROM_CART: (state, index) => {

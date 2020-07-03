@@ -8,7 +8,16 @@
         name: 'catalog'
       }"
     >
-      <a class="to-catalog link">В каталог</a>
+      <a class="to-catalog link"
+        ><b-icon
+          class="icon"
+          icon="arrow-left"
+          scale="1.25"
+          shift-v="1.25"
+          aria-hidden="true"
+        ></b-icon
+        >В каталог</a
+      >
     </router-link>
     <h1 class="title">Контакты</h1>
 
@@ -78,5 +87,9 @@ export default {
 .contacts-nav img:hover {
   transform: scale(1.04);
   transition: all 0.4s ease;
+}
+
+.icon {
+  margin-right: 5px;
 }
 </style>
