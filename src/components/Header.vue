@@ -19,7 +19,14 @@
         }"
         ><a class="link">Оплата</a></router-link
       >
-      <a class="link">Контакты</a>
+      <router-link
+        class="link"
+        :to="{
+          name: 'contacts'
+        }"
+        ><a href="contacts" class="link">Контакты</a></router-link
+      >
+
       <router-link
         class="link"
         :to="{

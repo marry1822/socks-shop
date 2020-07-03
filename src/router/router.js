@@ -4,7 +4,7 @@ import Catalog from "../components/Catalog";
 import Cart from "../components/Cart";
 import Shipment from "../components/Shipment";
 import Payment from "../components/Payment";
-
+import Contacts from "../components/Contacts";
 
 Vue.use(VueRouter);
 
@@ -23,7 +23,8 @@ let router = new VueRouter({
       props: true
     },
     { path: "/shipment", name: "shipment", component: Shipment },
-    { path: "/payment", name: "payment", component: Payment }
+    { path: "/payment", name: "payment", component: Payment },
+    { path: "/contacts", name: "contacts", component: Contacts }
   ]
 });
 
