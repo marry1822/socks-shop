@@ -69,6 +69,7 @@ export default {
 
 .item-image {
   width: 100%;
+  cursor: pointer;
 }
 
 .item-price {

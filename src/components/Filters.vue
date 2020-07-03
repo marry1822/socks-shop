@@ -1,5 +1,7 @@
 <template>
-  <div class="filters d-flex flex-row justify-content-center">
+  <div
+    class="filters d-flex flex-row justify-content-center align-items-center"
+  >
     <div class="select">
       <p class="name">Категория:</p>
       <b-form-select v-model.number="selected" :selected="selected">
@@ -27,8 +29,10 @@
           v-model.number="maxPrice"
           type="number"
         ></b-form-input>
+        <p class="currency">₽</p>
       </div>
     </div>
+    <b-button class="reset" size="sm" variant="outline-secondary" @click="reset">Сбросить фильтры</b-button>
   </div>
 </template>
 
@@ -54,6 +58,11 @@ export default {
       type: Number,
       default: 300
     }
+  },
+  methods: {
+    reset() {
+      (this.selected = 0), (this.minPrice = 0), (this.maxPrice = 300);
+    }
   }
 };
 </script>
@@ -61,7 +70,10 @@ export default {
 <style scoped>
 .filters {
   margin: 50px 0;
+  padding-bottom: 20px;
+  border-bottom: solid 1px #e2dcd5;
 }
+
 .select {
   width: 150px;
   margin-right: 50px;
@@ -73,23 +85,9 @@ export default {
   cursor: pointer;
 }
 
-.options {
-  border: solid 1px #e2dcd5;
-  background: #ffffff;
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.options p:hover {
-  background: #e2dcd5;
-}
-
 .price-input {
-  width: 150px;
+  width: 200px;
+  margin-right: 50px;
 }
 
 .name {
@@ -101,5 +99,14 @@ export default {
 .price {
   text-align: center;
   margin: 0 5px;
+}
+
+.currency {
+  margin: 0;
+}
+
+.reset {
+  height: 38px;
+  margin-top: 35px;
 }
 </style>

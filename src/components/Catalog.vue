@@ -3,8 +3,8 @@
     <h1 class="title catalog-title">Каталог</h1>
     <Filters :options="categories" :selected="selected" />
     <BRow>
-      <BCol cols="4" v-for="item in filteredProducts" :key="item.article">
-        <CatalogItem :product_data="item" @addToCart="addToCart" />
+      <BCol cols="4" v-for="product in filteredProducts" :key="product.article">
+        <CatalogItem :product_data="product" @addToCart="addToCart" />
       </BCol>
     </BRow>
   </div>
@@ -47,6 +47,7 @@ export default {
     filteredProducts() {
       let filtered = this.items
         .filter(item => {
+          console.log(item.category.value, this.selected);
           return this.selected == 0 || item.category.value === this.selected;
         })
         .filter(item => {
