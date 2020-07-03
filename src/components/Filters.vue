@@ -1,17 +1,33 @@
 <template>
-  <div class="select">
-    <p class="select-name">Категория:</p>
-    <p class="title" @click="areOptionsVisible = !areOptionsVisible">
-      {{ selected }}
-    </p>
-    <div class="options" v-if="areOptionsVisible">
-      <p
-        v-for="option in options"
-        :key="option.value"
-        @click="selectOption(option)"
+  <div class="filters d-flex flex-column">
+    <div class="select">
+      <p class="name">Категория:</p>
+      <b-form-select v-model.number="selected" :selected="selected">
+        <b-form-select-option :value="0">Все</b-form-select-option>
+        <b-form-select-option
+          v-for="option in options"
+          :key="option.value"
+          :value="option.value"
+          >{{ option.text }}</b-form-select-option
+        >
+      </b-form-select>
+    </div>
+    <div class="price-input">
+      <p class="name">Цена:</p>
+      <div
+        class="price-input-container d-flex justify-content-between align-items-center"
       >
-        {{ option.name }}
-      </p>
+        <b-form-input
+          class="price"
+          v-model.number="minPrice"
+          type="number"
+        ></b-form-input>
+        <b-form-input
+          class="price"
+          v-model.number="maxPrice"
+          type="number"
+        ></b-form-input>
+      </div>
     </div>
   </div>
 </template>
@@ -27,29 +43,17 @@ export default {
       }
     },
     selected: {
-      type: String,
-      default: ""
-    }
-  },
-  data() {
-    return {
-      areOptionsVisible: false
-    };
-  },
-  methods: {
-    selectOption(option) {
-      this.$emit("select", option);
-      this.areOptionsVisible = false;
+      type: Number,
+      default: 0
     },
-    hideSelect() {
-      this.areOptionsVisible = false;
+    minPrice: {
+      type: Number,
+      default: 0
+    },
+    maxPrice: {
+      type: Number,
+      default: 300
     }
-  },
-  mounted() {
-    document.addEventListener("click", this.hideSelect.bind(this), true);
-  },
-  beforeDestroy() {
-    document.removeEventListener("click", this.hideSelect);
   }
 };
 </script>
@@ -59,13 +63,7 @@ export default {
   width: 150px;
   position: fixed;
   left: 30px;
-  top: 290px;
-}
-
-.select-name {
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: left;
+  top: 400px;
 }
 
 .title {
@@ -87,5 +85,23 @@ export default {
 
 .options p:hover {
   background: #e2dcd5;
+}
+
+.price-input {
+  width: 150px;
+  position: fixed;
+  left: 30px;
+  top: 300px;
+}
+
+.name {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.price {
+  text-align: center;
+  margin: 0 5px;
 }
 </style>
