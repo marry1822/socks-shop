@@ -4,7 +4,11 @@
   >
     <div class="select">
       <p class="name">Категория:</p>
-      <b-form-select v-model.number="selected" :selected="selected">
+      <b-form-select
+        v-model="selected"
+        :selected="selected"
+        @select="onSelectChange"
+      >
         <b-form-select-option :value="0">Все</b-form-select-option>
         <b-form-select-option
           v-for="option in options"
@@ -32,13 +36,21 @@
         <p class="currency">₽</p>
       </div>
     </div>
-    <b-button class="reset" size="sm" variant="outline-secondary" @click="reset">Сбросить фильтры</b-button>
+    <b-button class="reset" size="sm" variant="outline-secondary" @click="reset"
+      >Сбросить фильтры</b-button
+    >
   </div>
 </template>
 
 <script>
 export default {
   name: "Filters",
+  //в data создала тоже значения, которые использую в селекте и инпуте
+  data: () => ({
+    selectedCategory: 0,
+    minimalPrice: 0,
+    maximumPrice: 300
+  }),
   props: {
     options: {
       type: Array,
@@ -59,9 +71,19 @@ export default {
       default: 300
     }
   },
+  watch: {
+    selected: function() {
+      //не знаю, что писать
+      console.log("Selected changed to: ", this.selected);
+    }
+  },
   methods: {
     reset() {
-      (this.selected = 0), (this.minPrice = 0), (this.maxPrice = 300);
+      //здесь по идее тоже нельзя использовать пропсы
+      (this.selected = 0), (this.minPrice = 0), (this.max = 300);
+    },
+    onSelectChange(option) {
+      this.$emit("onCategoryChange", option);
     }
   }
 };
