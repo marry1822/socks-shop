@@ -4,7 +4,12 @@
     <Filters
       :options="categories"
       :selected="selected"
-      @onCategoryChange="onSelectChange"
+      :minPrice="minPrice"
+      :maxPrice="maxPrice"
+      @onCategoryChange="onCategoryChange"
+      @onMinPriceChange="onMinPriceChange"
+      @onMaxPriceChange="onMaxPriceChange"
+      @reset="reset"
     />
     <BRow>
       <BCol cols="4" v-for="product in filteredProducts" :key="product.article">
@@ -23,12 +28,12 @@ export default {
   data: () => ({
     items: [],
     categories: [
+      { text: "Все", value: 0 },
       { text: "Мужские", value: 1 },
       { text: "Женские", value: 2 },
       { text: "Унисекс", value: 3 }
     ],
-    //эти 3 значения передаю в виде пропсов к компоненту Filters
-    selected: 0,
+    selected: "Все",
     minPrice: 0,
     maxPrice: 300
   }),
@@ -39,6 +44,7 @@ export default {
   mounted() {
     this.GET_PRODUCTS_FROM_API().then(response => {
       this.items = response.data;
+      console.log(this.items);
     });
   },
   methods: {
@@ -46,20 +52,26 @@ export default {
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
-    onSelectChange() {
-      //пока не пойму, что писать
+    onCategoryChange(category) {
+      this.selected = category;
+    },
+    onMinPriceChange(price) {
+      this.minPrice = price;
+    },
+    onMaxPriceChange(price) {
+      this.maxPrice = price;
+    },
+    reset() {
+      (this.selected = "Все"), (this.minPrice = 0), (this.maxPrice = 300);
     }
   },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
-    //массив объектов для отрисовки карточек товаров в template
     filteredProducts() {
       let filtered = this.items
-        //по категории
         .filter(item => {
-          return this.selected == 0 || item.category.value === this.selected;
+          return this.selected == "Все" || this.selected == item.category;
         })
-        //по цене
         .filter(item => {
           return item.price >= this.minPrice && item.price <= this.maxPrice;
         });

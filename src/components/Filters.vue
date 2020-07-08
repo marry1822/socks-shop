@@ -4,16 +4,11 @@
   >
     <div class="select">
       <p class="name">Категория:</p>
-      <b-form-select
-        v-model="selected"
-        :selected="selected"
-        @select="onSelectChange"
-      >
-        <b-form-select-option :value="0">Все</b-form-select-option>
+      <b-form-select :value="selected" @input="onSelectChange">
         <b-form-select-option
           v-for="option in options"
-          :key="option.value"
-          :value="option.value"
+          :key="option.text"
+          :value="option.text"
           >{{ option.text }}</b-form-select-option
         >
       </b-form-select>
@@ -25,13 +20,15 @@
       >
         <b-form-input
           class="price"
-          v-model.number="minPrice"
+          :value="minPrice"
           type="number"
+          @input="onMinPriceChange"
         ></b-form-input>
         <b-form-input
           class="price"
-          v-model.number="maxPrice"
+          :value="maxPrice"
           type="number"
+          @input="onMaxPriceChange"
         ></b-form-input>
         <p class="currency">₽</p>
       </div>
@@ -45,12 +42,6 @@
 <script>
 export default {
   name: "Filters",
-  //в data создала тоже значения, которые использую в селекте и инпуте
-  data: () => ({
-    selectedCategory: 0,
-    minimalPrice: 0,
-    maximumPrice: 300
-  }),
   props: {
     options: {
       type: Array,
@@ -59,8 +50,8 @@ export default {
       }
     },
     selected: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ""
     },
     minPrice: {
       type: Number,
@@ -71,19 +62,18 @@ export default {
       default: 300
     }
   },
-  watch: {
-    selected: function() {
-      //не знаю, что писать
-      console.log("Selected changed to: ", this.selected);
-    }
-  },
   methods: {
     reset() {
-      //здесь по идее тоже нельзя использовать пропсы
-      (this.selected = 0), (this.minPrice = 0), (this.max = 300);
+      this.$emit("reset");
     },
     onSelectChange(option) {
       this.$emit("onCategoryChange", option);
+    },
+    onMinPriceChange(price) {
+      this.$emit("onMinPriceChange", price);
+    },
+    onMaxPriceChange(price) {
+      this.$emit("onMaxPriceChange", price);
     }
   }
 };

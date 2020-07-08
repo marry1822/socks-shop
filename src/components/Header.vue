@@ -7,6 +7,14 @@
       <router-link
         class="link"
         :to="{
+          name: 'auth'
+        }"
+      >
+        <a href="auth" class="link">Авторизация</a>
+      </router-link>
+      <router-link
+        class="link"
+        :to="{
           name: 'shipment'
         }"
       >
