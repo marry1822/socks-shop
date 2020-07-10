@@ -1,6 +1,6 @@
 <template>
   <div
-    class="shipment-info d-flex align-items-center justify-content-center flex-column"
+    class="payment-info d-flex align-items-center justify-content-center flex-column"
   >
     <router-link
       class="link"
@@ -25,13 +25,14 @@
 
 <script>
 export default {
-  name: "Shipment"
+  name: "Payment"
 };
 </script>
 
 <style scoped>
-.shipment-info {
-  margin-top: 150px;
+.payment-info {
+  /* margin-top: 150px; */
+  height: 70vh;
   color: #5e616a;
 }
 

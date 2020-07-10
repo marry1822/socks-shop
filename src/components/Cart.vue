@@ -95,6 +95,7 @@ export default {
 <style scoped>
 .cart {
   width: 90%;
+  min-height: calc(100vh - 230px);
 }
 
 .to-catalog {

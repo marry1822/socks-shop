@@ -1,6 +1,8 @@
 <template>
   <footer class="footer" id="contacts">
-    <div class="footer-container d-flex align-center justify-center">
+    <div
+      class="footer-container d-flex align-items-center justify-content-center"
+    >
       <span>Contact us:</span>
       <BNav class="footer-nav">
         <a
@@ -28,14 +30,6 @@ export default {
 </script>
 
 <style scoped>
-.align-center {
-  align-items: center;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
 .footer {
   background-color: #e2dcd5;
   padding-top: auto;

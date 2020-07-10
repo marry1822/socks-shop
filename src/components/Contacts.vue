@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .contacts {
-  margin-top: 150px;
+  height: 70vh;
   color: #5e616a;
 }
 

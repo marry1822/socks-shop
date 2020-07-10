@@ -2,20 +2,20 @@
   <div id="app">
     <Header />
     <MainWrapper />
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
 <script>
 import MainWrapper from "@/components/MainWrapper";
 import Header from "@/components/Header";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 export default {
   name: "App",
   components: {
     MainWrapper,
-    Header
-    // Footer
+    Header,
+    Footer
   }
 };
 </script>

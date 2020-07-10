@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Catalog from "../components/Catalog";
+import Catalog from "../components/Catalog.vue";
 
 Vue.use(VueRouter);
 
