@@ -44,7 +44,6 @@ export default {
   mounted() {
     this.GET_PRODUCTS_FROM_API().then(response => {
       this.items = response.data;
-      console.log(this.items);
     });
   },
   methods: {

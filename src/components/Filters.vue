@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .filters {
-  margin: 50px 0;
+  margin-bottom: 50px;
   padding-bottom: 20px;
   border-bottom: solid 1px #e2dcd5;
 }

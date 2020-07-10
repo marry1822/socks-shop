@@ -35,7 +35,10 @@
     <div class="cart-total">
       <p>К оплате:</p>
       <p class="text-bold">{{ cartTotalCost }} ₽</p>
-      <b-button class="pay" size="sm">Оплатить</b-button>
+      <b-button v-if="!cart_data.length" class="pay-disabled" size="sm" disabled
+        >Оплатить</b-button
+      >
+      <b-button v-else class="pay" size="sm">Оплатить</b-button>
     </div>
   </div>
 </template>
@@ -142,13 +145,22 @@ export default {
   font-size: 18px;
 }
 
+.pay-disabled {
+  background-color: #a3b4a0;
+  color: #5e616a;
+  border-color: #a3b4a0;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .pay:hover {
   background-color: #81af7b;
   color: white;
   border-color: #81af7b;
 }
 
-.icon{
+.icon {
   margin-right: 5px;
 }
 </style>
