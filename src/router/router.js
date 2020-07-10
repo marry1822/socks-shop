@@ -1,11 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Catalog from "../components/Catalog";
-import Cart from "../components/Cart";
-import Shipment from "../components/Shipment";
-import Payment from "../components/Payment";
-import Contacts from "../components/Contacts";
-import Auth from "../components/Auth";
 
 Vue.use(VueRouter);
 
@@ -20,13 +15,29 @@ let router = new VueRouter({
     {
       path: "/cart",
       name: "cart",
-      component: Cart,
+      component: () => import("../components/Cart.vue"),
       props: true
     },
-    { path: "/shipment", name: "shipment", component: Shipment },
-    { path: "/payment", name: "payment", component: Payment },
-    { path: "/contacts", name: "contacts", component: Contacts },
-    { path: "/auth", name: "auth", component: Auth }
+    {
+      path: "/shipment",
+      name: "shipment",
+      component: () => import("../components/Shipment.vue")
+    },
+    {
+      path: "/payment",
+      name: "payment",
+      component: () => import("../components/Payment.vue")
+    },
+    {
+      path: "/contacts",
+      name: "contacts",
+      component: () => import("../components/Contacts.vue")
+    },
+    {
+      path: "/auth",
+      name: "auth",
+      component: () => import("../components/Auth.vue")
+    }
   ]
 });
 
