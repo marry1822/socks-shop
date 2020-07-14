@@ -1,10 +1,26 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import authGuard from "@/guards/auth.guard";
 import axios from "axios";
+import firebase from "@/plugins/firebase";
+
+import mutations from "./mutations";
+import router from "@/router/router";
+import auth from "./modules/auth";
+import notify from "./modules/notify";
+import user from "./modules/user";
+
+const {
+  SET_PRODUCTS_TO_STATE,
+  TO_CART,
+  REMOVE_FROM_CART,
+  DECREMENT,
+  INCREMENT
+} = mutations;
 
 Vue.use(Vuex);
 
-let store = new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     products: [],
     cart: []
@@ -58,24 +74,42 @@ let store = new Vuex.Store({
     }
   },
   mutations: {
-    SET_PRODUCTS_TO_STATE: (state, products) => {
+    [SET_PRODUCTS_TO_STATE](state, products) {
       state.products = products;
     },
-    TO_CART: (state, product) => {
+    [TO_CART](state, product) {
       state.cart.push({ ...product, quantity: 1 });
     },
-    REMOVE_FROM_CART: (state, index) => {
+    [REMOVE_FROM_CART](state, index) {
       state.cart.splice(index, 1);
     },
-    DECREMENT: (state, index) => {
+    [DECREMENT](state, index) {
       if (state.cart[index].quantity > 1) {
         state.cart[index].quantity--;
       }
     },
-    INCREMENT: (state, index) => {
+    [INCREMENT](state, index) {
       state.cart[index].quantity++;
     }
+  },
+  modules: {
+    auth,
+    notify,
+    user
   }
 });
+
+console.log(store);
+
+firebase.auth().onAuthStateChanged(userData => {
+  store.dispatch("setIsLoggedInState", Boolean(userData));
+  store.dispatch("setUserState", userData);
+
+  if (userData) {
+    router.push({ name: "catalog" });
+  }
+});
+
+authGuard(store);
 
 export default store;

@@ -20,7 +20,7 @@
       >
     </router-link>
     <h1 class="title">Авторизуйтесь</h1>
-    <Forms />
+    <Forms/>
   </div>
 </template>
 

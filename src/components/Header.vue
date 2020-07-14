@@ -18,21 +18,21 @@
           name: 'shipment'
         }"
       >
-        <a href="shipment" class="link">Доставка</a>
+        <a class="link">Доставка</a>
       </router-link>
       <router-link
         class="link"
         :to="{
           name: 'payment'
         }"
-        ><a href="payment" class="link">Оплата</a>
+        ><a class="link">Оплата</a>
       </router-link>
       <router-link
         class="link"
         :to="{
           name: 'contacts'
         }"
-        ><a href="contacts" class="link">Контакты</a>
+        ><a class="link">Контакты</a>
       </router-link>
       <router-link
         class="link"
@@ -43,7 +43,7 @@
           }
         }"
       >
-        <a href="cart" class="link"
+        <a class="link"
           ><b-icon
             class="icon"
             icon="cart2"
@@ -54,14 +54,22 @@
           >Корзина: {{ CART.length }}</a
         >
       </router-link>
+      <b-button type="danger" small @click="logOut">Выйти</b-button>
     </b-nav>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "Header",
+  methods: {
+    ...mapActions("auth", ["logout"]),
+    async logOut() {
+      await this.logout();
+      this.$router.push({ name: "auth" });
+    }
+  },
   computed: {
     ...mapGetters(["CART"])
   }
@@ -98,7 +106,7 @@ export default {
   text-decoration: none;
 }
 
-.icon{
+.icon {
   margin-right: 5px;
 }
 </style>
