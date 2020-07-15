@@ -1,5 +1,4 @@
 import firebase from "@/plugins/firebase";
-
 export const firebaseLogin = async (email, password) => {
   try {
     const data = await firebase
@@ -22,7 +21,7 @@ export const firebaseLogout = async () => {
 
 export const firebaseSignup = async (email, password) => {
   try {
-    const data = firebase
+    const data = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
     return data;
@@ -31,11 +30,19 @@ export const firebaseSignup = async (email, password) => {
   }
 };
 
-export const sendEmailVerification = () => {
+export const sendEmailVerification = async () => {
   try {
-    const user = firebase.auth().currentUser;
+    const user = await firebase.auth().currentUser;
     user.sendEmailVerification();
-    console.log("Email sent");
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const firebaseResetPassword = async email => {
+  try {
+    const data = await firebase.auth().sendPasswordResetEmail(email);
+    return data;
   } catch (error) {
     return Promise.reject(error);
   }

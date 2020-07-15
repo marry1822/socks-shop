@@ -62,6 +62,16 @@
         </b-form-checkbox>
       </b-form-group>
       <div class="form-action d-flex flex-column">
+        <router-link
+          class="link"
+          :to="{
+            name: 'forgot_password'
+          }"
+        >
+          <a class="link forgot-password-link" href=""
+            >Забыли пароль? Сбросить пароль</a
+          ></router-link
+        >
         <div>
           <b-button
             class="form-btn"
@@ -71,8 +81,16 @@
             >Войти<b-spinner small v-if="loginInProgress"></b-spinner
           ></b-button>
         </div>
-
-        <a class="link" href="">Забыли пароль? Сбросить пароль</a>
+        <router-link
+          class="link"
+          :to="{
+            name: 'signup'
+          }"
+        >
+          <a class="link register-link" href=""
+            >Нет аккаунта? Зарегистрироваться</a
+          >
+        </router-link>
       </div>
     </b-form>
   </div>
@@ -89,8 +107,7 @@ export default {
       password: "",
       confirmPassword: ""
     },
-    showLogInPassword: false,
-    showRegisterPassword: false
+    showLogInPassword: false
   }),
   validations: {
     formData: {
@@ -111,7 +128,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("auth", ["loginInProgress", "signupInProgress"]),
+    ...mapGetters("auth", ["loginInProgress"]),
     disaledBtnLogin() {
       return (
         this.$v.formData.email.$invalid || this.$v.formData.password.$invalid
@@ -130,7 +147,11 @@ export default {
   cursor: pointer;
   color: #5e616a;
   text-decoration: none;
-  margin-top: 20px;
+}
+
+.forgot-password-link {
+  text-align: left;
+  font-size: 12px;
 }
 
 .form-btn {
@@ -138,6 +159,8 @@ export default {
   color: #5e616a;
   border-color: #c5c0ba;
   width: 200px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .form-btn:hover {

@@ -4,7 +4,7 @@ import authGuard from "@/guards/auth.guard";
 import axios from "axios";
 import firebase from "@/plugins/firebase";
 import mutations from "./mutations";
-import router from "@/router/router";
+// import router from "@/router/router";
 import auth from "./modules/auth";
 import notify from "./modules/notify";
 import user from "./modules/user";
@@ -103,7 +103,7 @@ firebase.auth().onAuthStateChanged(userData => {
   store.dispatch("setUserState", userData);
 
   if (userData) {
-    router.push({ name: "catalog" });
+    // router.push({ name: "catalog" });
   }
 });
 

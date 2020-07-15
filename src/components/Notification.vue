@@ -14,8 +14,7 @@ export default {
   },
   methods: {
     showMessage(value) {
-      this.$bvToast.toast(value.message, {...value});
-      console.log(value)
+      this.$bvToast.toast(value.message, { ...value });
     }
   }
 };

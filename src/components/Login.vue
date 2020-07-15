@@ -19,23 +19,17 @@
         >В каталог</a
       >
     </router-link>
-    <h1 class="title">Авторизуйтесь</h1>
-    <!-- <Forms/> -->
-    <!-- <LoginForm/> -->
-    <RegisterForm/>
+    <h1 class="title">Вход</h1>
+    <LoginForm />
   </div>
 </template>
 
 <script>
-// import Forms from "@/components/Forms";
-// import LoginForm from "@/components/LoginForm";
-import RegisterForm from "@/components/RegisterForm";
+import LoginForm from "@/components/LoginForm";
 export default {
-  name: "Auth",
+  name: "Login",
   components: {
-    // Forms,
-    // LoginForm,
-    RegisterForm
+    LoginForm
   }
 };
 </script>

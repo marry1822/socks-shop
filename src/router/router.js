@@ -34,9 +34,19 @@ let router = new VueRouter({
       component: () => import("../components/Contacts.vue")
     },
     {
-      path: "/auth",
-      name: "auth",
-      component: () => import("../components/Auth.vue")
+      path: "/login",
+      name: "login",
+      component: () => import("../components/Login.vue")
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: () => import("../components/SignUp.vue")
+    },
+    {
+      path: "/forgot_password",
+      name: "forgot_password",
+      component: () => import("../components/ForgotPassword.vue")
     }
   ]
 });

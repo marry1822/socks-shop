@@ -7,10 +7,10 @@
       <router-link
         class="link"
         :to="{
-          name: 'auth'
+          name: 'login'
         }"
       >
-        <a href="auth" class="link">Авторизация</a>
+        <a href="login" class="link">Войти</a>
       </router-link>
       <router-link
         class="link"

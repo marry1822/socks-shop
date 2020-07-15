@@ -152,8 +152,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("auth", ["loginInProgress", "signupInProgress"]),
-
+    ...mapGetters("auth", [ "signupInProgress"]),
     disaledBtnRegister() {
       return (
         this.$v.formData.email.$invalid ||
