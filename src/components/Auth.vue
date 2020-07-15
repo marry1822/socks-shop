@@ -20,16 +20,22 @@
       >
     </router-link>
     <h1 class="title">Авторизуйтесь</h1>
-    <Forms/>
+    <!-- <Forms/> -->
+    <!-- <LoginForm/> -->
+    <RegisterForm/>
   </div>
 </template>
 
 <script>
-import Forms from "@/components/Forms";
+// import Forms from "@/components/Forms";
+// import LoginForm from "@/components/LoginForm";
+import RegisterForm from "@/components/RegisterForm";
 export default {
   name: "Auth",
   components: {
-    Forms
+    // Forms,
+    // LoginForm,
+    RegisterForm
   }
 };
 </script>

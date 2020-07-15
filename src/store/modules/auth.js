@@ -1,19 +1,23 @@
 import mutations from "@/store/mutations";
 import {
   firebaseLogin,
-  firebaseLogout
+  firebaseLogout,
+  firebaseSignup,
+  sendEmailVerification
 } from "@/services/firebase/auth.service";
-const { IS_LOGGED_IN, LOGIN_LOADER } = mutations;
+const { IS_LOGGED_IN, LOGIN_LOADER, SIGNUP_LOADER } = mutations;
 
 const authStore = {
   namespaced: true,
   state: {
     isLoggedIn: false,
-    loginInProgress: false
+    loginInProgress: false,
+    signupInProgress: false
   },
   getters: {
     isLoggedIn: ({ isLoggedIn }) => isLoggedIn,
-    loginInProgress: ({ loginInProgress }) => loginInProgress
+    loginInProgress: ({ loginInProgress }) => loginInProgress,
+    signupInProgress: ({ signupInProgress }) => signupInProgress
   },
   mutations: {
     [IS_LOGGED_IN](state, bool) {
@@ -21,6 +25,9 @@ const authStore = {
     },
     [LOGIN_LOADER](state, bool) {
       state.loginInProgress = bool;
+    },
+    [SIGNUP_LOADER](state, bool) {
+      state.signupInProgress = bool;
     }
   },
   actions: {
@@ -49,6 +56,21 @@ const authStore = {
         await firebaseLogout();
       } catch (error) {
         console.log(error);
+      }
+    },
+    async signup({ commit, dispatch }, { email, password }) {
+      try {
+        commit(SIGNUP_LOADER, true);
+        await firebaseSignup(email, password);
+        sendEmailVerification();
+      } catch (error) {
+        dispatch(
+          "loadMessage",
+          { variant: "danger", title: "Error", message: error.message },
+          { root: true }
+        );
+      } finally {
+        commit(SIGNUP_LOADER, false);
       }
     }
   }

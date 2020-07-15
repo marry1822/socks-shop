@@ -3,7 +3,6 @@ import Vuex from "vuex";
 import authGuard from "@/guards/auth.guard";
 import axios from "axios";
 import firebase from "@/plugins/firebase";
-
 import mutations from "./mutations";
 import router from "@/router/router";
 import auth from "./modules/auth";
@@ -98,8 +97,6 @@ const store = new Vuex.Store({
     user
   }
 });
-
-console.log(store);
 
 firebase.auth().onAuthStateChanged(userData => {
   store.dispatch("setIsLoggedInState", Boolean(userData));

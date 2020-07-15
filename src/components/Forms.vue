@@ -27,14 +27,13 @@
               Введите корректный email
             </div>
           </b-form-group>
-
           <b-form-group
             label="Пароль:"
             label-for="passwordLogin"
             prop="password"
           >
             <b-form-input
-              v-if="!showPassword"
+              v-if="!showLogInPassword"
               placeholder="Введите пароль"
               @blur="$v.formData.password.$touch()"
               v-model="formData.password"
@@ -66,7 +65,7 @@
               class="show-password-checkbox"
               id="show-password"
               size="sm"
-              v-model="showPassword"
+              v-model="showLogInPassword"
             >
               Показать пароль
             </b-form-checkbox>
@@ -99,7 +98,9 @@
               placeholder="Введите email"
               v-model="formData.email"
               @blur="$v.formData.email.$touch()"
-              :class="{ 'is-invalid': $v.formData.email.$error }"
+              :class="{
+                'is-invalid': $v.formData.email.$error
+              }"
               id="emailRegister"
               type="text"
             >
@@ -117,10 +118,25 @@
             prop="password"
           >
             <b-form-input
+              v-if="!showRegisterPassword"
               placeholder="Введите пароль"
               @blur="$v.formData.password.$touch()"
               v-model="formData.password"
-              :class="{ 'is-invalid': $v.formData.password.$error }"
+              :class="{
+                'is-invalid': $v.formData.password.$error
+              }"
+              id="passwordRegister"
+              type="password"
+            >
+            </b-form-input>
+            <b-form-input
+              v-else
+              placeholder="Введите пароль"
+              @blur="$v.formData.password.$touch()"
+              v-model="formData.password"
+              :class="{
+                'is-invalid': $v.formData.password.$error
+              }"
               id="passwordRegister"
               type="password"
             >
@@ -134,6 +150,14 @@
             >
               Пароль должен содержать не менее 6 символов
             </div>
+            <b-form-checkbox
+              class="show-password-checkbox"
+              id="show-register-password"
+              size="sm"
+              v-model="showRegisterPassword"
+            >
+              Показать пароль
+            </b-form-checkbox>
           </b-form-group>
           <b-form-group
             label="Подтвердите пароль:"
@@ -144,7 +168,9 @@
               placeholder="Введите пароль"
               @blur="$v.formData.confirmPassword.$touch()"
               v-model="formData.confirmPassword"
-              :class="{ 'is-invalid': $v.formData.confirmPassword.$error }"
+              :class="{
+                'is-invalid': $v.formData.confirmPassword.$error
+              }"
               id="confirmPasswordRegister"
               type="password"
             >
@@ -173,7 +199,10 @@
             :disabled="disaledBtnRegister"
             type="submit"
             variant="primary"
-            >Зарегистрироваться<b-spinner small v-if="loginInProgress"></b-spinner
+            >Зарегистрироваться<b-spinner
+              small
+              v-if="signupInProgress"
+            ></b-spinner
           ></b-button>
         </b-form>
       </b-tab>
@@ -193,7 +222,8 @@ export default {
       password: "",
       confirmPassword: ""
     },
-    showPassword: false
+    showLogInPassword: false,
+    showRegisterPassword: false
   }),
   validations: {
     formData: {
@@ -213,16 +243,22 @@ export default {
     }
   },
   methods: {
-    ...mapActions("auth", ["login"]),
+    ...mapActions("auth", ["login", "signup"]),
     onSubmitLogin() {
       this.login({ ...this.formData });
     },
-    showHidePassword() {
-      this.showPassword = !this.showPassword;
+    onSubmitRegister() {
+      this.signup({ ...this.formData });
+    },
+    showHideLogInPassword() {
+      this.showLogInPassword = !this.showLogInPassword;
+    },
+    showHideRegisterPassword() {
+      this.showRegisterPassword = !this.showRegisterPassword;
     }
   },
   computed: {
-    ...mapGetters("auth", ["loginInProgress"]),
+    ...mapGetters("auth", ["loginInProgress", "signupInProgress"]),
     disaledBtnLogin() {
       return (
         this.$v.formData.email.$invalid || this.$v.formData.password.$invalid

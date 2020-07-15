@@ -19,3 +19,24 @@ export const firebaseLogout = async () => {
     return Promise.reject(error);
   }
 };
+
+export const firebaseSignup = async (email, password) => {
+  try {
+    const data = firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const sendEmailVerification = () => {
+  try {
+    const user = firebase.auth().currentUser;
+    user.sendEmailVerification();
+    console.log("Email sent");
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
