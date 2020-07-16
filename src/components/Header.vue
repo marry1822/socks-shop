@@ -1,8 +1,15 @@
 <template>
   <div class="header d-flex align-items-center justify-content-between">
-    <a class="logo link" href="catalog"
-      ><img src="../assets/logo.png" alt="logo" width="100px"
-    /></a>
+    <router-link
+      class="link"
+      :to="{
+        name: 'catalog'
+      }"
+    >
+      <a class="logo link">
+        <img src="../assets/logo.png" alt="logo" width="100px" />
+      </a>
+    </router-link>
     <b-nav class="header-nav">
       <router-link
         class="link"

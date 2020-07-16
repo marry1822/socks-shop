@@ -150,10 +150,18 @@ export default {
     ...mapActions("auth", ["signup"]),
     onSubmitRegister() {
       this.signup({ ...this.formData });
+    },
+    redirectToCatalog(val) {
+      if (val) {
+        this.$router.push({ name: "catalog" });
+      }
     }
   },
+  watch: {
+    isLoggedIn: "redirectToCatalog"
+  },
   computed: {
-    ...mapGetters("auth", ["signupInProgress"]),
+    ...mapGetters("auth", ["signupInProgress", "isLoggedIn"]),
     disaledBtnRegister() {
       return (
         this.$v.formData.email.$invalid ||
@@ -208,5 +216,4 @@ export default {
 .link:hover {
   color: darkgray;
 }
-
 </style>
