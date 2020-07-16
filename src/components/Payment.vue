@@ -31,7 +31,6 @@ export default {
 
 <style scoped>
 .payment-info {
-  /* margin-top: 150px; */
   height: 70vh;
   color: #5e616a;
 }

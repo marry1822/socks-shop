@@ -2,23 +2,6 @@
   <div
     class="auth d-flex align-items-center justify-content-center flex-column"
   >
-    <router-link
-      class="link"
-      :to="{
-        name: 'catalog'
-      }"
-    >
-      <a class="to-catalog link"
-        ><b-icon
-          class="icon"
-          icon="arrow-left"
-          scale="1.25"
-          shift-v="1.25"
-          aria-hidden="true"
-        ></b-icon
-        >В каталог</a
-      >
-    </router-link>
     <h1 class="title">Вход</h1>
     <LoginForm />
   </div>

@@ -16,7 +16,7 @@ const {
 const authStore = {
   namespaced: true,
   state: {
-    isLoggedIn: false,
+    isLoggedIn: Boolean(localStorage.getItem("token")),
     loginInProgress: false,
     signupInProgress: false,
     resetPasswordInProgress: false
@@ -87,9 +87,10 @@ const authStore = {
         dispatch(
           "loadMessage",
           {
+            title:'Вы успешно зарегистрировались!',
             variant: "success",
             message:
-              "Вы успешно зарегистрировались, письмо с подтверждением отправлено на ваш email"
+              "Письмо с подтверждением отправлено на ваш email, теперь вы можете перейти к выбору товаров"
           },
           { root: true }
         );

@@ -7,14 +7,6 @@
       <router-link
         class="link"
         :to="{
-          name: 'login'
-        }"
-      >
-        <a href="login" class="link">Войти</a>
-      </router-link>
-      <router-link
-        class="link"
-        :to="{
           name: 'shipment'
         }"
       >
@@ -35,6 +27,7 @@
         ><a class="link">Контакты</a>
       </router-link>
       <router-link
+        v-if="!CART.length"
         class="link"
         :to="{
           name: 'cart',
@@ -54,7 +47,47 @@
           >Корзина: {{ CART.length }}</a
         >
       </router-link>
-      <b-button type="danger" small @click="logOut">Выйти</b-button>
+      <router-link
+        v-else
+        class="link"
+        :to="{
+          name: 'cart',
+          params: {
+            cart_data: CART
+          }
+        }"
+      >
+        <a class="link"
+          ><b-icon
+            class="icon"
+            icon="cart-fill"
+            scale="1.25"
+            shift-v="1.25"
+            aria-hidden="true"
+          ></b-icon
+          >Корзина: {{ CART.length }}</a
+        >
+      </router-link>
+      <a v-if="!isLoggedIn" class="link"
+        ><b-icon
+          class="icon"
+          icon="box-arrow-in-right"
+          scale="1.25"
+          shift-v="1.25"
+          aria-hidden="true"
+        ></b-icon
+        >Войти</a
+      >
+      <a v-else class="link" @click="logOut"
+        ><b-icon
+          class="icon"
+          icon="box-arrow-left"
+          scale="1.25"
+          shift-v="1.25"
+          aria-hidden="true"
+        ></b-icon
+        >Выйти</a
+      >
     </b-nav>
   </div>
 </template>
@@ -67,11 +100,12 @@ export default {
     ...mapActions("auth", ["logout"]),
     async logOut() {
       await this.logout();
-      this.$router.push({ name: "auth" });
+      this.$router.push({ name: "login" });
     }
   },
   computed: {
-    ...mapGetters(["CART"])
+    ...mapGetters(["CART"]),
+    ...mapGetters("auth", ["isLoggedIn"])
   }
 };
 </script>

@@ -47,7 +47,6 @@
 <script>
 import { email, required } from "vuelidate/lib/validators";
 import { mapActions, mapGetters } from "vuex";
-import router from "@/router/router";
 export default {
   name: "ForgotPassword",
   data: () => ({
@@ -63,7 +62,7 @@ export default {
     ...mapActions("auth", ["resetPassword"]),
     onSubmit() {
       this.resetPassword(this.email);
-      router.push({ name: "login" });
+      this.$router.push({ name: "login" });
     }
   },
   computed: {

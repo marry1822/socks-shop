@@ -145,6 +145,7 @@ export default {
       }
     }
   },
+
   methods: {
     ...mapActions("auth", ["signup"]),
     onSubmitRegister() {
@@ -152,7 +153,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters("auth", [ "signupInProgress"]),
+    ...mapGetters("auth", ["signupInProgress"]),
     disaledBtnRegister() {
       return (
         this.$v.formData.email.$invalid ||
@@ -193,4 +194,19 @@ export default {
   text-align: right;
   margin-top: 10px;
 }
+
+.to-catalog {
+  padding: 5px 10px;
+}
+
+.link {
+  cursor: pointer;
+  color: #5e616a;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: darkgray;
+}
+
 </style>

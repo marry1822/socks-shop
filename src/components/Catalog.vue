@@ -1,6 +1,5 @@
 <template>
   <div class="catalog d-flex flex-wrap justify-content-center">
-    <!-- <h1 class="title catalog-title">Каталог</h1> -->
     <Filters
       :options="categories"
       :selected="selected"
@@ -85,9 +84,5 @@ export default {
   width: 1100px;
   margin-top: 150px;
   color: #5e616a;
-}
-
-.title {
-  margin: 50px 0;
 }
 </style>

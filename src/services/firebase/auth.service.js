@@ -47,3 +47,12 @@ export const firebaseResetPassword = async email => {
     return Promise.reject(error);
   }
 };
+
+export const getUserIdToken = async () => {
+  try {
+    const token = await firebase.auth().currentUser.getIdToken();
+    return token;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};

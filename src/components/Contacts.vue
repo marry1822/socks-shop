@@ -30,9 +30,6 @@
         target="_blank"
         >Instagram<img :src="require('../assets/instagram.png')"
       /></a>
-      <!-- <a class="link" target="_blank"
-        >WhatsApp<img :src="require('../assets/whatsapp.png')"
-      /></a> -->
     </BNav>
   </div>
 </template>

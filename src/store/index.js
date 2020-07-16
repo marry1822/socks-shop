@@ -3,8 +3,8 @@ import Vuex from "vuex";
 import authGuard from "@/guards/auth.guard";
 import axios from "axios";
 import firebase from "@/plugins/firebase";
+import { getUserIdToken } from "@/services/firebase/auth.service";
 import mutations from "./mutations";
-// import router from "@/router/router";
 import auth from "./modules/auth";
 import notify from "./modules/notify";
 import user from "./modules/user";
@@ -98,12 +98,15 @@ const store = new Vuex.Store({
   }
 });
 
-firebase.auth().onAuthStateChanged(userData => {
+firebase.auth().onAuthStateChanged(async userData => {
   store.dispatch("setIsLoggedInState", Boolean(userData));
   store.dispatch("setUserState", userData);
 
   if (userData) {
-    // router.push({ name: "catalog" });
+    const token = await getUserIdToken();
+    localStorage.setItem("token", token);
+  } else {
+    localStorage.removeItem("token");
   }
 });
 

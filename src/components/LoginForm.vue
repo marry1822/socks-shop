@@ -125,10 +125,18 @@ export default {
     ...mapActions("auth", ["login"]),
     onSubmitLogin() {
       this.login({ ...this.formData });
+    },
+    redirectToCatalog(val) {
+      if (val) {
+        this.$router.push({ name: "catalog" });
+      }
     }
   },
+  watch: {
+    isLoggedIn: "redirectToCatalog"
+  },
   computed: {
-    ...mapGetters("auth", ["loginInProgress"]),
+    ...mapGetters("auth", ["loginInProgress", "isLoggedIn"]),
     disaledBtnLogin() {
       return (
         this.$v.formData.email.$invalid || this.$v.formData.password.$invalid
