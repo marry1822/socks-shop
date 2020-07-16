@@ -8,7 +8,8 @@
         name: 'catalog'
       }"
     >
-      <a class="to-catalog link"><b-icon
+      <a class="to-catalog link">
+        <b-icon
           class="icon"
           icon="arrow-left"
           scale="1.25"

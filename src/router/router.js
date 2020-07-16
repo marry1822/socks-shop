@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Catalog from "../components/Catalog.vue";
+// import Catalog from "../components/Catalog.vue";
 
 Vue.use(VueRouter);
 
@@ -9,7 +9,8 @@ let router = new VueRouter({
     {
       path: "/",
       name: "catalog",
-      component: Catalog,
+      // component: Catalog,
+      component: () => import("../components/Catalog.vue"),
       props: true
     },
     {
