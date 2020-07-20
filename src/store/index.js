@@ -34,9 +34,7 @@ const store = new Vuex.Store({
   },
   actions: {
     GET_PRODUCTS_FROM_API({ commit }) {
-      return axios("http://localhost:3000/products", {
-        method: "GET"
-      })
+      return axios.get("https://buy-with-mary-server.herokuapp.com/products")
         .then(products => {
           commit("SET_PRODUCTS_TO_STATE", products.data);
           return products;

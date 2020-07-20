@@ -1,124 +1,19 @@
 {
-  "products": [
+  "posts": [
     {
-      "image": "1.jpg",
-      "name": "Следочки «Fox»",
-      "price": 79,
-      "article": "T1",
-      "available": true,
-      "category": "Женские",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "36-39"
-    },
-    {
-      "image": "2.jpg",
-      "name": "Носки «Статуя свободы»",
-      "price": 190,
-      "article": "T2",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "37-45"
-    },
-    {
-      "image": "3.jpg",
-      "name": "Яркая фруктовая коллекция «Авокадо»",
-      "price": 159,
-      "article": "T3",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 80%, ПА 15%, Эластан 5%",
-      "size": "36-40"
-    },
-    {
-      "image": "4.jpg",
-      "name": "Яркая фруктовая коллекция «Банан»",
-      "price": 159,
-      "article": "T4",
-      "available": false,
-      "category": "Унисекс",
-      "material": "Хлопок 80%, ПА 15%, Эластан 5%",
-      "size": "36-40"
-    },
-    {
-      "image": "5.jpg",
-      "name": "Набор «Ушки» 5 пар",
-      "price": 299,
-      "article": "T5",
-      "available": false,
-      "category": "Женские",
-      "material": "Хлопок 85%, ПА 10%, Эластан 5%",
-      "size": "35-39"
-    },
-    {
-      "image": "6.jpg",
-      "name": "Носки «Венера»",
-      "price": 190,
-      "article": "T6",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "37-45"
-    },
-    {
-      "image": "7.jpg",
-      "name": "Носки «Крик»",
-      "price": 190,
-      "article": "T7",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "37-45"
-    },
-    {
-      "image": "8.jpg",
-      "name": "Носки «Суши»",
-      "price": 189,
-      "article": "T8",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 80%, ПА 15%, Эластан 5%",
-      "size": "36-45"
-    },
-    {
-      "image": "9.jpg",
-      "name": "Носки «Авокадо»",
-      "price": 190,
-      "article": "T9",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 80%, ПА 15%, Эластан 5%",
-      "size": "36-45"
-    },
-    {
-      "image": "10.jpg",
-      "name": "Носки унисекс",
-      "price": 229,
-      "article": "T10",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "37-45"
-    },
-    {
-      "image": "11.jpg",
-      "name": "Носки унисекс",
-      "price": 229,
-      "article": "T11",
-      "available": true,
-      "category": "Унисекс",
-      "material": "Хлопок 84%, ПА 15%, Эластан 1%",
-      "size": "37-45"
-    },
-    {
-      "image": "12.jpg",
-      "name": "Носки «Лосось»",
-      "price": 229,
-      "article": "T12",
-      "available": true,
-      "category": "Мужские",
-      "material": "Хлопок 80%, ПА 15%, Эластан 5%",
-      "size": "39-46"
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
     }
-  ]
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }
